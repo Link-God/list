@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <sstream>
 #include<iostream>
+#include <utility>
 
 using namespace std;
 
@@ -48,35 +49,33 @@ void delete_first(node_t * & head)
 	head = head->next;
 	delete time; // т.к указатель , то при удалении удалиться и сам "элемент"
 }
-void print(node_t * head)
-{
-	node_t *el;
-	el = head->next;
-
-	while (el->next != nullptr) {
+void print(node_t * head) {
+	node_t *p;
+	p = head;
+	while (p) {
 		cout << "+---+" << "    ";
-		el = el->next;
+		p = p->next;
 	}
-	el = head->next;
+	p = head;
 	cout << endl;
 
-	while (el->next != nullptr) {
-		cout << "| " << el->value << " |";
-		el = el->next;
-		if (el->next != nullptr) {
+	while (p) {
+		cout << "| " << p->value << " |";
+		p = p->next;
+		if (p) {
 			cout << "--->";
 		}
 	}
-	el = head->next;
+	p = head;
 	cout << endl;
 
-	while (el->next != nullptr) {
+	while (p) {
 		cout << "+---+" << "    ";
-		el = el->next;
+		p = p->next;
 	}
 	cout << endl;
 }
-void reverse(node_t * & head)
+void reverse(node_t * &head)
 {
 	node_t*new_head = nullptr;
 	
@@ -107,7 +106,6 @@ int main()
 			break;
 		case '=':
 			print(head);
-			cin.get();
 			break;
 		case'/':
 			reverse(head);
